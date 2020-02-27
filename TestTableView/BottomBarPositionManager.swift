@@ -16,12 +16,18 @@ protocol CollapsibleBottomBarPositionDelegate: class {
 
 class CollapsibleBottomBarPositionManager {
     
-    private static let thresholdVelocityForPositionChanges: CGFloat = 1.0
+    enum BarPosition {
+        case show
+        case transition
+        case hide
+    }
+    
+    private static let thresholdVelocityForPositionChanges: CGFloat = 0.5
 
     private let bottomBarHeight: CGFloat
     private var contentOffset: CGFloat
     private var bottomBarCurrentPosition: CGFloat
-    private var isPanning = false
+    private var barPosition = BarPosition.show
     
     private weak var delegate: CollapsibleBottomBarPositionDelegate?
 
@@ -33,38 +39,81 @@ class CollapsibleBottomBarPositionManager {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-                
-        if isPanning {
-            let maxPosition = maxBottomBarPosition(in: scrollView)
-            let proposedPosition = proposedBottomBarPosition(in: scrollView)
-            
-            let newPosition = min(max(proposedPosition, -20), maxPosition)
-            delegate?.bottomBarPositionShouldChange(to: newPosition, animated: false)
-            bottomBarCurrentPosition = newPosition
+        
+//        if isScrollViewAtTop(scrollView) {
+//            barPosition = .show
+//            let newPosition = maxBottomBarPosition(in: scrollView)
+//            bottomBarCurrentPosition = newPosition
+//            delegate?.bottomBarPositionShouldChange(to: newPosition, animated: true)
+//        }
+        
+        switch barPosition{
+        case .transition:
+            adjustBarForUserDrag(scrollView)
+        case .hide, .show:
+            break
         }
+        
         contentOffset = scrollView.contentOffset.y
     }
     
+
+    
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        isPanning = true
+        // We only move into the transition state from the show state here to prevent the bar from peeking out unnecessarily
+        // User can still get bar to show again in scrollViewWillEndDragging
+        if barPosition == .show {
+            barPosition = .transition
+        }
     }
     
+    /**
+     Call this when user removes finger from screen (easiest from UIScrollViewDelegate.scrollViewWillEndDragging
+     If scrolling up fast, show the bottom bar
+     If scrolling down fast, hide the bottom bar
+     If somewhere inbetween, let the bar move to whichever position is closer
+     */
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint) {
         let yVelocity = velocity.y
         let maxPosition = maxBottomBarPosition(in: scrollView)
         
-        let newPosition: CGFloat
-        if yVelocity > CollapsibleBottomBarPositionManager.thresholdVelocityForPositionChanges {
-            newPosition = -20
-        } else if yVelocity < -CollapsibleBottomBarPositionManager.thresholdVelocityForPositionChanges {
-            newPosition = maxPosition
-        } else if bottomBarCurrentPosition > maxPosition / 2 {
-            newPosition = maxPosition
-        } else {
-            newPosition = -20
+        if yVelocity < -CollapsibleBottomBarPositionManager.thresholdVelocityForPositionChanges {
+            barPosition = .show
+        } else if yVelocity > CollapsibleBottomBarPositionManager.thresholdVelocityForPositionChanges {
+            barPosition = .hide
+        } else if barPosition == .transition && bottomBarCurrentPosition > maxPosition * 0.5 {
+            barPosition = .show
+        } else //if barPosition == .transition
+        {
+            barPosition = .hide
         }
+        
+        let newPosition: CGFloat
+        switch barPosition {
+        case .hide:
+            newPosition = 0
+        case .show:
+            newPosition = maxPosition
+        case .transition:
+            return
+        }
+        bottomBarCurrentPosition = newPosition
         delegate?.bottomBarPositionShouldChange(to: newPosition, animated: true)
-        isPanning = false
+    }
+    
+    private func isScrollViewAtTop(_ scrollView: UIScrollView) -> Bool {
+        let topPosition = -scrollView.adjustedContentInset.top
+        let currentPosition = scrollView.contentOffset.y
+        return topPosition >= currentPosition
+    }
+    
+    private func adjustBarForUserDrag(_ scrollView: UIScrollView) {
+        let maxPosition = maxBottomBarPosition(in: scrollView)
+        let proposedPosition = proposedBottomBarPosition(in: scrollView)
+        
+        let newPosition = min(max(proposedPosition, -20), maxPosition)
+        delegate?.bottomBarPositionShouldChange(to: newPosition, animated: false)
+        bottomBarCurrentPosition = newPosition
     }
     
     private func maxBottomBarPosition(in scrollView: UIScrollView) -> CGFloat {
@@ -78,6 +127,44 @@ class CollapsibleBottomBarPositionManager {
     }
     
 }
+
+
+
+//        // if scrolling up fast
+//        if yVelocity < -CollapsibleBottomBarPositionManager.thresholdVelocityForPositionChanges {
+//            barPosition = .show
+//        } else if yVelocity
+//
+//
+//
+//
+//        switch barPosition {
+//        case .hide:
+//            if yVelocity < -CollapsibleBottomBarPositionManager.thresholdVelocityForPositionChanges {
+//                barPosition = .show
+//                newPosition = maxPosition
+//            }
+//        case .show:
+//
+//        }
+//
+//        let newPosition: CGFloat
+//        //scroll down real fast
+//        if yVelocity > CollapsibleBottomBarPositionManager.thresholdVelocityForPositionChanges {
+//            newPosition = -20
+//        //scroll up real fast
+//        } else if yVelocity < -CollapsibleBottomBarPositionManager.thresholdVelocityForPositionChanges {
+//            barPosition = .show
+//            newPosition = maxPosition
+//        }
+////        else if bottomBarCurrentPosition > maxPosition / 2 {
+////            newPosition = maxPosition
+////        }
+//        else {
+//            barPosition = .hide
+//            newPosition = -20
+//        }
+//        delegate?.bottomBarPositionShouldChange(to: newPosition, animated: true)
 
 //    }
 //    func scrollViewDidEndDragging(_ scrollView: UIScrollView, didUserSlingIt: Bool) {

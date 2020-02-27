@@ -82,6 +82,7 @@ extension ViewController: UITableViewDelegate {
         print("scrollViewWillEndDragging")
         test.scrollViewWillEndDragging(scrollView, withVelocity: velocity)
     }
+  
     
 //    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
 //        test.scrollViewDidEndDragging(scrollView, didUserSlingIt: decelerate)
