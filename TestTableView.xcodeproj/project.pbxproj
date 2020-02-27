@@ -14,6 +14,7 @@
 		C55A242E23FCB56700D05497 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C55A242C23FCB56700D05497 /* LaunchScreen.storyboard */; };
 		C55A243923FCB56700D05497 /* TestTableViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55A243823FCB56700D05497 /* TestTableViewTests.swift */; };
 		C55A244423FCB56700D05497 /* TestTableViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55A244323FCB56700D05497 /* TestTableViewUITests.swift */; };
+		C55A245223FCC84500D05497 /* BottomBarPositionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55A245123FCC84500D05497 /* BottomBarPositionManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		C55A243F23FCB56700D05497 /* TestTableViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestTableViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C55A244323FCB56700D05497 /* TestTableViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTableViewUITests.swift; sourceTree = "<group>"; };
 		C55A244523FCB56700D05497 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C55A245123FCC84500D05497 /* BottomBarPositionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBarPositionManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				C55A242A23FCB56700D05497 /* Assets.xcassets */,
 				C55A242C23FCB56700D05497 /* LaunchScreen.storyboard */,
 				C55A242F23FCB56700D05497 /* Info.plist */,
+				C55A245123FCC84500D05497 /* BottomBarPositionManager.swift */,
 			);
 			path = TestTableView;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 			files = (
 				C55A242623FCB56600D05497 /* ViewController.swift in Sources */,
 				C55A242423FCB56600D05497 /* AppDelegate.swift in Sources */,
+				C55A245223FCC84500D05497 /* BottomBarPositionManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,6 +437,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7A4VPG8L6G;
 				INFOPLIST_FILE = TestTableView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -450,6 +455,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7A4VPG8L6G;
 				INFOPLIST_FILE = TestTableView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
