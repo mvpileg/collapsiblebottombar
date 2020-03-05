@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     var userIsPanning = false
     
     var test: CollapsibleBottomBarPositionManager!
+    var test2: CollapsibleBottomBarPositionManagerV2!
     
     enum BottomBarState {
         case show
@@ -34,12 +35,56 @@ class ViewController: UIViewController {
     }
     
     private func setupBottomBar() {
+//        let toolbar = UIToolbar()
+//        self.view.addSubview(toolbar)
+//
+//        toolbar.translatesAutoresizingMaskIntoConstraints = false
+//
+//        toolbar.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+//        toolbar.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+//        toolbar.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+//        toolbar.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
+//
+//        self.navigationController?.toolbar = UIToolbar()
+        let fab = UIView(frame: CGRect.zero)
+        view.addSubview(fab)
+
+        fab.translatesAutoresizingMaskIntoConstraints = false
+        fab.backgroundColor = UIColor.red
+        
+        fab.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        fab.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        fab.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20.0).isActive = true
+        fab.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 20.0).isActive = true
+
+        setToolbarItems([UIBarButtonItem(title: "test", style: .done, target: nil, action: nil)], animated: false)
+        navigationController?.toolbar.frame = self.view.bounds
+        
+        self.navigationController?.hidesBarsOnSwipe = true
+        
+        return
+        //inner bottom bar view
+        let improvedBottomBar = UIView()
+        improvedBottomBar.backgroundColor = UIColor.red
+        test2 = CollapsibleBottomBarPositionManagerV2(bottomBar: improvedBottomBar, parentView: view, preferredHeight: 50.0)
+        
+        return
         let bottomBar = UIView()
         bottomBar.backgroundColor = UIColor.gray
-        
         view.addSubview(bottomBar)
+        
+        bottomBar.translatesAutoresizingMaskIntoConstraints = false
 
-        bottomBarTopConstraint = bottomBar.topAnchor.constraint(equalTo: view.bottomAnchor, constant: -50.0)
+        NSLayoutConstraint.activate([
+            bottomBar.heightAnchor.constraint(equalToConstant: 50.0)
+        ])
+        
+        
+        
+        
+        
+        
+        bottomBarTopConstraint = bottomBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50.0)
 
         NSLayoutConstraint.activate([
             bottomBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -47,7 +92,6 @@ class ViewController: UIViewController {
             bottomBar.heightAnchor.constraint(equalToConstant: 100.0),
             bottomBarTopConstraint
             ])
-        bottomBar.translatesAutoresizingMaskIntoConstraints = false
         test = CollapsibleBottomBarPositionManager(bottomBarHeight: 50, scrollView: tableView, delegate: self)
     }
 
@@ -72,15 +116,17 @@ extension ViewController: UITableViewDataSource {
 
 extension ViewController: UITableViewDelegate {
     
+    func scrollViewDidChangeAdjustedContentInset(_ scrollView: UIScrollView) {
+//        test2.scrollViewDidChangeAdjustedContentInset(scrollView)
+    }
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        test.scrollViewWillBeginDragging(scrollView)
+//        test2.scrollViewWillBeginDragging(scrollView)
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        test.scrollViewDidScroll(scrollView)
+//          test2.scrollViewDidScroll(scrollView)
     }
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        print("scrollViewWillEndDragging")
-        test.scrollViewWillEndDragging(scrollView, withVelocity: velocity)
+//        test2.scrollViewWillEndDragging(scrollView, withVelocity: velocity)
     }
   
     

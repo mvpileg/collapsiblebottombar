@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Messaging-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TestTableView" customModuleProvider="target" sceneMemberID="viewController">
@@ -41,7 +41,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="yu2-bc-9Wm"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Messaging" id="yu2-bc-9Wm">
+                        <rightBarButtonItems>
+                            <barButtonItem image="bigimage" id="67X-9r-LEK"/>
+                            <barButtonItem image="bigimage" id="0Uh-EQ-cLw"/>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="sCR-fn-Hao" id="DcO-jm-ckQ"/>
                     </connections>
@@ -53,13 +60,17 @@
         <!--Navigation Controller-->
         <scene sceneID="sfK-3k-nv6">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OOs-ch-fJN" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="OOs-ch-fJN" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GU4-DY-p1V">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XbU-by-BP7">
+                        <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="q53-9f-oLj"/>
                     </connections>
@@ -69,4 +80,7 @@
             <point key="canvasLocation" x="137.68115942028987" y="133.92857142857142"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bigimage" width="48" height="48"/>
+    </resources>
 </document>

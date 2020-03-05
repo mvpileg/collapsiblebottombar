@@ -31,6 +31,8 @@ class CollapsibleBottomBarPositionManager {
     
     private weak var delegate: CollapsibleBottomBarPositionDelegate?
 
+
+    
     init(bottomBarHeight: CGFloat, scrollView: UIScrollView, delegate: CollapsibleBottomBarPositionDelegate) {
         self.bottomBarHeight = bottomBarHeight
         bottomBarCurrentPosition = bottomBarHeight

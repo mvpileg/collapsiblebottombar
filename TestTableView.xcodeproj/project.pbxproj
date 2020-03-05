@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C52BAC1A240F014D008CDF88 /* CollapsibleBottomBarPositionManagerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52BAC19240F014D008CDF88 /* CollapsibleBottomBarPositionManagerV2.swift */; };
 		C55A242423FCB56600D05497 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55A242323FCB56600D05497 /* AppDelegate.swift */; };
 		C55A242623FCB56600D05497 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55A242523FCB56600D05497 /* ViewController.swift */; };
 		C55A242923FCB56600D05497 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C55A242723FCB56600D05497 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 		C55A243923FCB56700D05497 /* TestTableViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55A243823FCB56700D05497 /* TestTableViewTests.swift */; };
 		C55A244423FCB56700D05497 /* TestTableViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55A244323FCB56700D05497 /* TestTableViewUITests.swift */; };
 		C55A245223FCC84500D05497 /* BottomBarPositionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55A245123FCC84500D05497 /* BottomBarPositionManager.swift */; };
+		C56A40AD24104E720094A925 /* CustomNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56A40AC24104E720094A925 /* CustomNavController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C52BAC19240F014D008CDF88 /* CollapsibleBottomBarPositionManagerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsibleBottomBarPositionManagerV2.swift; sourceTree = "<group>"; };
 		C55A242023FCB56600D05497 /* TestTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C55A242323FCB56600D05497 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C55A242523FCB56600D05497 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +52,7 @@
 		C55A244323FCB56700D05497 /* TestTableViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTableViewUITests.swift; sourceTree = "<group>"; };
 		C55A244523FCB56700D05497 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C55A245123FCC84500D05497 /* BottomBarPositionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBarPositionManager.swift; sourceTree = "<group>"; };
+		C56A40AC24104E720094A925 /* CustomNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,8 @@
 				C55A242C23FCB56700D05497 /* LaunchScreen.storyboard */,
 				C55A242F23FCB56700D05497 /* Info.plist */,
 				C55A245123FCC84500D05497 /* BottomBarPositionManager.swift */,
+				C52BAC19240F014D008CDF88 /* CollapsibleBottomBarPositionManagerV2.swift */,
+				C56A40AC24104E720094A925 /* CustomNavController.swift */,
 			);
 			path = TestTableView;
 			sourceTree = "<group>";
@@ -261,6 +267,8 @@
 			files = (
 				C55A242623FCB56600D05497 /* ViewController.swift in Sources */,
 				C55A242423FCB56600D05497 /* AppDelegate.swift in Sources */,
+				C52BAC1A240F014D008CDF88 /* CollapsibleBottomBarPositionManagerV2.swift in Sources */,
+				C56A40AD24104E720094A925 /* CustomNavController.swift in Sources */,
 				C55A245223FCC84500D05497 /* BottomBarPositionManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
